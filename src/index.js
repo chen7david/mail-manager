@@ -12,7 +12,6 @@ const cors = require('cors')
 const router = require('express-promise-router')()
 const { dd } = require('funx-js')
 
-
 // APP MIDDLEWARE
 app.use(express.json()) 
 app.use(express.urlencoded({ extended: true }))
