@@ -23,7 +23,7 @@ app.use(notifyStatusTo('error'))
 app.use(notifyStatusTo('validation'))
 
 router.route('/auth/mailer/send')
-    .post(validateBody(schema), send)
+    .get(validateBody(schema.config), send)
 
 app.use(router)
 app.use(invalidHandler)
