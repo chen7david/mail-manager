@@ -18,4 +18,16 @@ class Mail {
             auth: { user, pass }
         })
     }
+
+    async send(options){
+        const { to, subject, template, from } = options
+        return await this.mailer.sendMail({
+            from: from ? from : this.from, 
+            to: to ? to : this.to,
+            subject: subject ? subject : this.subject,
+            html: template ? template : 'we are just <p>testing</p> this'
+        })
+    }
 }
+
+module.exports = (options) => new Mail(options)

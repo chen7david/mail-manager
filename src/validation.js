@@ -6,6 +6,8 @@ const schema = {
         from: Joi.string().lowercase(),
         to: Joi.string().min(4).required(),
         subject: Joi.string().min(1).required(),
+        cc: Joi.array(),
+        bcc: Joi.array(),
         template: Joi.string().min(1).required(),
         data: Joi.string()
     })
