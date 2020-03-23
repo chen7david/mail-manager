@@ -27,6 +27,7 @@
     "express": "^4.17.1",
     "express-joi-validators": "^1.0.2",
     "express-notify": "0.0.1",
+    "express-notify-io": "0.0.3",
     "express-promise-router": "^3.0.3",
     "funx-js": "0.0.14",
     "lodash": "^4.17.15",

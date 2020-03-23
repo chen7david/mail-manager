@@ -1,37 +1,33 @@
 require('dotenv').config()
-const express = require('express')
+const express = require('express') 
 const app = express()
 const server = require('http').createServer(app)
+const port = require('./../config').app.port || 4000
+const { send } = require('./controller')
+const { notifyStatusTo } = require('./notify')
+const { invalidHandler, errorHandler, validationHandler } = require('./handlers')
+const { validateBody, schema } = require('./validation')
+const { cargo } = require('cargo-io')
+const cors = require('cors')
 const router = require('express-promise-router')()
-const port = 5000
-const Joi = require('@hapi/joi')
-const { validateBody } = require('express-joi-validators')
-
-const schema = Joi.object().options({abortEarly: false}).keys({
-    from: Joi.string().lowercase(),
-    to: Joi.string().min(4).required(),
-    subject: Joi.string().min(1).required(),
-    template: Joi.string().min(1).required(),
-    data: Joi.string()
-})
+const { dd } = require('funx-js')
 
 
-const requestHandler = (req, res, next) => {
-
-}
-
-const errorHandler = (err, req, res, next) => {
-    res.status(422).json(err)
-}
-
-
-
+// APP MIDDLEWARE
+app.use(express.json()) 
+app.use(express.urlencoded({ extended: true }))
+app.use(cors())
+app.use(cargo())
+app.use(notifyStatusTo('info'))
+app.use(notifyStatusTo('error'))
+app.use(notifyStatusTo('validation'))
 
 router.route('/auth/mailer/send')
-    .post(validateBody(schema), requestHandler)
+    .post(validateBody(schema), send)
 
 app.use(router)
-
+app.use(invalidHandler)
+app.use(validationHandler)
 app.use(errorHandler) 
 
 server.listen(port, () => {
