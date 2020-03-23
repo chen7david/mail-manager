@@ -33,6 +33,6 @@
     "lodash": "^4.17.15",
     "nodemailer": "^6.4.6",
     "notify-io": "^0.1.2",
-    "notify-io-schemas": "0.0.6"
+    "notify-io-schemas": "0.0.7"
   }
 }

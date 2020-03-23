@@ -22,7 +22,11 @@ module.exports = {
             'boolean.base',
             'number.base',
             'number.integer',
-            'array.base'
+            'array.base',
+            'string.base',
+            'object.empty',
+            'object.base',
+            'number.empty'
         ]
         
         const MSD = [
@@ -53,7 +57,7 @@ module.exports = {
         }
 
         cargo.details(msg.render())
-
+        dd(cargo.details)
         res.status(500).json(cargo)
     },
 }

@@ -9,7 +9,7 @@ const schema = {
         cc: Joi.array(),
         bcc: Joi.array(),
         template: Joi.string().min(1).required(),
-        data: Joi.string()
+        data: Joi.object()
     })
 }
 

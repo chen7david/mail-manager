@@ -7,7 +7,7 @@ const schema = new SchemaBuilder().merege({
     JoiSchema: JoiSchema(SchemaBuilder)
 })
 
-// console.log(schema.keys())
+console.log(schema.keys())
 
 const instance = () => new Notify(schema)
 const notifyStatusTo = require('express-notify-io')(instance)
