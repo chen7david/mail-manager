@@ -22,14 +22,16 @@ app.use(notifyStatusTo('info'))
 app.use(notifyStatusTo('error'))
 app.use(notifyStatusTo('validation'))
 
-router.route('/auth/mailer/send')
-    .get(validateBody(schema.config), send)
 
+// APP ROUTES
+router.route('/auth/mailer/send')
+    .post(validateBody(schema.config), send)
+
+// APP HANDLERS
 app.use(router)
 app.use(invalidHandler)
 app.use(validationHandler)
 app.use(errorHandler) 
 
-server.listen(port, () => {
-    console.log(`server running at http://localhost:${port}`)
-})
+server.listen(port, () => 
+    dd(`server running at http://localhost:${port}`))
