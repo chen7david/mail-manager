@@ -26,7 +26,8 @@ module.exports = {
             'string.base',
             'object.empty',
             'object.base',
-            'number.empty'
+            'number.empty',
+            'undefinded'
         ]
         
         const MSD = [
