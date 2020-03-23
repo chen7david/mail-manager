@@ -8,6 +8,7 @@ const { notifyStatusTo } = require('./notify')
 const { invalidHandler, errorHandler, validationHandler } = require('./handlers')
 const { validateBody, schema } = require('./validation')
 const { cargo } = require('cargo-io')
+const { requireAuth } = require('./check')
 const cors = require('cors')
 const router = require('express-promise-router')()
 const { dd } = require('funx-js')
@@ -24,7 +25,7 @@ app.use(notifyStatusTo('validation'))
 
 // APP ROUTES
 router.route('/auth/mailer/send')
-    .post(validateBody(schema.config), send)
+    .post(requireAuth, validateBody(schema.config), send)
 
 // APP HANDLERS
 app.use(router)

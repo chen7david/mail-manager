@@ -2,7 +2,7 @@ const { dd } = require('funx-js')
 const { mail } = require('./../config')
 const { template } = require('lodash')
 const mailer = require('./mailer')(mail)
-
+dd(require('./../config'))
 module.exports = {
 
     send: async (req, res, next) => {
