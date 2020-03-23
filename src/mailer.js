@@ -20,13 +20,18 @@ class Mail {
     }
 
     async send(options){
-        const { to, subject, template, from } = options
-        return await this.mailer.sendMail({
+        const { to, subject, template, from, cc, bcc } = options
+        const config = {
             from: from ? from : this.from, 
             to: to ? to : this.to,
             subject: subject ? subject : this.subject,
             html: template ? template : 'we are just <p>testing</p> this'
-        })
+        }
+
+        if(cc) config.cc = cc
+        if(bcc) config.bcc = bcc
+
+        return await this.mailer.sendMail(config)
     }
 }
 
