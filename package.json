@@ -31,7 +31,7 @@
     "express-promise-router": "^3.0.3",
     "funx-js": "0.0.14",
     "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "nodemailer": "^6.4.6",
     "notify-io": "^0.1.2",
     "notify-io-schemas": "0.0.7"
